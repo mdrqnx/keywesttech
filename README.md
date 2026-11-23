@@ -25,8 +25,8 @@ assets/
   css/pages/home.css   페이지 스타일
   js/main.js           헤더, 모바일 메뉴, 스크롤 애니메이션, 메뉴 하이라이트(scrollspy), 문의 양식(mailto)
   img/brand/           공식 로고(기존 홈페이지 로고를 벡터화한 SVG), 파비콘
-  img/photos/          히어로·회사소개 이미지(기존 홈페이지 이미지)
-  img/consulting/      IT 컨설팅 단계 이미지(기존 홈페이지 이미지)
+  img/photos/          히어로 사진(Pexels) · 회사소개 섬 사진(기존 홈페이지 이미지)
+  img/consulting/      IT 컨설팅 단계 사진(Pexels)
 ```
 
 ## 로컬에서 보기
@@ -41,3 +41,12 @@ python3 -m http.server 8000
 - 기존 사이트의 오탈자(주소 "통안구" → "동안구", "Imfra" → "Infra" 등)를 바로잡았습니다.
 - IT 컨설팅 STEP 4(이행계획 수립)의 세부 항목은 기존 사이트에 STEP 1 항목이 중복 게시되어 있어,
   일반적인 정보화전략(ISP) 이행계획 항목(이행과제 우선순위 도출 · 추진 일정 수립 · 소요 자원·예산 산정)으로 채웠습니다. 실제 내용으로 확인·수정해 주세요.
+
+## 사진 출처 (Pexels License — 상업적 이용 가능, 출처 표기 의무 없음)
+| 파일 | Pexels 사진 |
+| --- | --- |
+| `assets/img/photos/hero-flight.jpg` | https://www.pexels.com/photo/airplane-wing-above-clouds-731217/ |
+| `assets/img/consulting/step-1.jpg` | https://www.pexels.com/photo/colleagues-having-a-meeting-5439478/ |
+| `assets/img/consulting/step-2.jpg` | https://www.pexels.com/photo/close-up-shot-of-a-laptop-computer-12969403/ |
+| `assets/img/consulting/step-3.jpg` | https://www.pexels.com/photo/white-printer-paper-196645/ |
+| `assets/img/consulting/step-4.jpg` | https://www.pexels.com/photo/manager-considering-project-strategy-by-the-task-board-6804077/ |
