@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="시스템 통합 허브 다이어그램">
+  <style>
+    text { font-family: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace; }
+    .flow { stroke-dasharray: 3 9; animation: flow 1.4s linear infinite; }
+    .flow.rev { animation-direction: reverse; }
+    .spin { transform-box: view-box; transform-origin: 240px 288px; animation: spin 40s linear infinite; }
+    .pulse { transform-box: view-box; transform-origin: 240px 288px; animation: pulse 2.8s ease-out infinite; }
+    .blink { animation: blink 2.4s ease-in-out infinite; }
+    @keyframes flow { to { stroke-dashoffset: -24; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.7; } 100% { transform: scale(1.55); opacity: 0; } }
+    @keyframes blink { 50% { opacity: 0.35; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="46%" r="72%">
+      <stop offset="0" stop-color="#0d2f50"/>
+      <stop offset="1" stop-color="#041321"/>
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+    </pattern>
+    <radialGradient id="gridMask" cx="50%" cy="48%" r="60%">
+      <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="fade"><rect width="480" height="600" fill="url(#gridMask)"/></mask>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b9bff"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="accentH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b9bff"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="480" height="600" fill="url(#bg)"/>
+  <rect width="480" height="600" fill="url(#grid)" mask="url(#fade)"/>
+
+  <!-- window bar -->
+  <rect x="24" y="24" width="432" height="38" rx="11" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+  <circle cx="45" cy="43" r="4.5" fill="#1f3b55"/><circle cx="61" cy="43" r="4.5" fill="#1f3b55"/><circle cx="77" cy="43" r="4.5" fill="#1f3b55"/>
+  <text x="240" y="47" text-anchor="middle" font-size="11" fill="#7d93ad">integration-hub · keywest</text>
+  <circle cx="430" cy="43" r="3.5" fill="#2dd4bf" class="blink"/>
+
+  <!-- links (hub center 240,288) -->
+  <g stroke-width="1.5" fill="none">
+    <g stroke="#3b9bff" stroke-opacity="0.28">
+      <path d="M240 288 L240 128"/><path d="M240 288 L383 206"/><path d="M240 288 L383 370"/>
+      <path d="M240 288 L240 448"/><path d="M240 288 L97 370"/><path d="M240 288 L97 206"/>
+    </g>
+    <g stroke="#67e8f9" stroke-opacity="0.9">
+      <path class="flow" d="M240 288 L240 128"/>
+      <path class="flow rev" d="M240 288 L383 206"/>
+      <path class="flow" d="M240 288 L383 370"/>
+      <path class="flow rev" d="M240 288 L240 448"/>
+      <path class="flow" d="M240 288 L97 370"/>
+      <path class="flow rev" d="M240 288 L97 206"/>
+    </g>
+  </g>
+
+  <!-- orbit rings -->
+  <circle cx="240" cy="288" r="165" fill="none" stroke="#7cc4ff" stroke-opacity="0.12"/>
+  <g class="spin">
+    <circle cx="240" cy="288" r="104" fill="none" stroke="#7cc4ff" stroke-opacity="0.35" stroke-dasharray="2 10"/>
+    <circle cx="240" cy="184" r="3" fill="#67e8f9"/>
+    <circle cx="344" cy="288" r="2.5" fill="#3b9bff"/>
+  </g>
+  <circle cx="240" cy="288" r="70" fill="#0b2540" fill-opacity="0.6" stroke="#3b9bff" stroke-opacity="0.35"/>
+  <circle class="pulse" cx="240" cy="288" r="46" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+
+  <!-- core -->
+  <circle cx="240" cy="288" r="44" fill="url(#accent)" filter="url(#glow)"/>
+  <circle cx="240" cy="288" r="44" fill="none" stroke="#ffffff" stroke-opacity="0.35"/>
+  <text x="240" y="292" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff" letter-spacing="1">KWT</text>
+  <text x="240" y="308" text-anchor="middle" font-size="8" fill="#e6f6ff" letter-spacing="2">CORE</text>
+
+  <!-- nodes -->
+  <g font-size="10.5" fill="#d6ebff" letter-spacing="1">
+    <g transform="translate(240 128)">
+      <rect x="-44" y="-16" width="88" height="32" rx="9" fill="#0a2238" stroke="#67e8f9" stroke-opacity="0.45"/>
+      <circle cx="-30" cy="0" r="3.5" fill="#2dd4bf"/><text x="6" y="4" text-anchor="middle">WEB</text>
+    </g>
+    <g transform="translate(383 206)">
+      <rect x="-44" y="-16" width="88" height="32" rx="9" fill="#0a2238" stroke="#67e8f9" stroke-opacity="0.45"/>
+      <circle cx="-30" cy="0" r="3.5" fill="#2dd4bf"/><text x="6" y="4" text-anchor="middle">WAS</text>
+    </g>
+    <g transform="translate(383 370)">
+      <rect x="-44" y="-16" width="88" height="32" rx="9" fill="#0a2238" stroke="#67e8f9" stroke-opacity="0.45"/>
+      <circle cx="-30" cy="0" r="3.5" fill="#3b9bff"/><text x="6" y="4" text-anchor="middle">DB</text>
+    </g>
+    <g transform="translate(240 448)">
+      <rect x="-44" y="-16" width="88" height="32" rx="9" fill="#0a2238" stroke="#67e8f9" stroke-opacity="0.45"/>
+      <circle cx="-30" cy="0" r="3.5" fill="#2dd4bf"/><text x="6" y="4" text-anchor="middle">CLOUD</text>
+    </g>
+    <g transform="translate(97 370)">
+      <rect x="-44" y="-16" width="88" height="32" rx="9" fill="#0a2238" stroke="#67e8f9" stroke-opacity="0.45"/>
+      <circle cx="-30" cy="0" r="3.5" fill="#3b9bff"/><text x="6" y="4" text-anchor="middle">LEGACY</text>
+    </g>
+    <g transform="translate(97 206)">
+      <rect x="-44" y="-16" width="88" height="32" rx="9" fill="#0a2238" stroke="#67e8f9" stroke-opacity="0.45"/>
+      <circle cx="-30" cy="0" r="3.5" fill="#2dd4bf"/><text x="6" y="4" text-anchor="middle">NETWORK</text>
+    </g>
+  </g>
+
+  <!-- bottom panels -->
+  <g>
+    <rect x="24" y="500" width="208" height="76" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="40" y="522" font-size="9" fill="#7d93ad" letter-spacing="1.5">THROUGHPUT</text>
+    <path d="M40 562 L58 556 L76 559 L94 548 L112 551 L130 540 L148 544 L166 534 L184 538 L202 528 L216 531 L216 566 L40 566 Z" fill="url(#area)"/>
+    <polyline points="40,562 58,556 76,559 94,548 112,551 130,540 148,544 166,534 184,538 202,528 216,531" fill="none" stroke="url(#accentH)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="216" cy="531" r="3.5" fill="#67e8f9" class="blink"/>
+
+    <rect x="248" y="500" width="208" height="76" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="264" y="522" font-size="9" fill="#7d93ad" letter-spacing="1.5">SYNC</text>
+    <g font-size="8" fill="#9fb6cc" letter-spacing="1">
+      <text x="264" y="540">BUILD</text><text x="264" y="554">OPS</text><text x="264" y="568">PLAN</text>
+    </g>
+    <g>
+      <rect x="306" y="534" width="134" height="5" rx="2.5" fill="#ffffff" fill-opacity="0.08"/>
+      <rect x="306" y="534" width="112" height="5" rx="2.5" fill="url(#accentH)"/>
+      <rect x="306" y="548" width="134" height="5" rx="2.5" fill="#ffffff" fill-opacity="0.08"/>
+      <rect x="306" y="548" width="126" height="5" rx="2.5" fill="url(#accentH)"/>
+      <rect x="306" y="562" width="134" height="5" rx="2.5" fill="#ffffff" fill-opacity="0.08"/>
+      <rect x="306" y="562" width="86" height="5" rx="2.5" fill="url(#accentH)"/>
+    </g>
+  </g>
+</svg>
