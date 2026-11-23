@@ -27,13 +27,13 @@
   </g>
 
   <!-- rows -->
-  <g font-size="14.3" fill="#d6ebff" letter-spacing="0.5">
-    <text x="52" y="141">우선순위 도출</text>
-    <text x="52" y="191">추진 일정</text>
-    <text x="52" y="241">자원·예산</text>
-    <text x="52" y="291">시스템 구축</text>
-    <text x="52" y="341">전환·안정화</text>
-    <text x="52" y="391">운영 정착</text>
+  <g font-size="12.5" fill="#d6ebff" letter-spacing="1.5">
+    <text x="52" y="141">PRIORITIZE</text>
+    <text x="52" y="191">SCHEDULE</text>
+    <text x="52" y="241">BUDGET</text>
+    <text x="52" y="291">BUILD</text>
+    <text x="52" y="341">MIGRATE</text>
+    <text x="52" y="391">OPERATE</text>
   </g>
   <g>
     <rect class="grow" x="212" y="126" width="130" height="22" rx="11" fill="url(#ac4)"/>
