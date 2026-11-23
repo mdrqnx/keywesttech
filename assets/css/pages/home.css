@@ -31,19 +31,10 @@
 .hero__meta li { display: inline-flex; align-items: center; gap: 8px; }
 .hero__meta .lucide { width: 16px; height: 16px; color: #7cc4ff; }
 
-.hero__visual { position: relative; padding: 36px 0 44px; }
-.hero__frame {
-  position: relative; border-radius: 28px; overflow: hidden;
-  border: 1px solid var(--c-dark-line-2);
-  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.75);
-  aspect-ratio: 4 / 5; max-height: 640px; width: min(100%, 512px); margin-left: auto;
-}
-.hero__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
-.hero__frame::after { display: none; }
-.hero__frame::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(4, 19, 33, 0.05) 55%, rgba(4, 19, 33, 0.45));
-}
+.hero__visual { position: relative; padding: 8px 0; }
+/* frameless isometric graphic that sits directly on the hero background */
+.hero__frame { position: relative; width: min(100%, 560px); margin: 0 0 0 auto; }
+.hero__frame img { width: 100%; height: auto; display: block; }
 .hero-chip {
   position: absolute; display: flex; align-items: center; gap: 12px;
   padding: 12px 18px 12px 12px; border-radius: 16px;
@@ -57,11 +48,11 @@
 .hero-chip__icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(17, 105, 214, 0.28); color: #8fccff; flex-shrink: 0; }
 .hero-chip__icon--teal { background: rgba(16, 169, 160, 0.28); color: #7ee8da; }
 .hero-chip__icon .lucide { width: 20px; height: 20px; }
-.hero-chip--top { left: -28px; top: 0; }
-.hero-chip--bottom { right: -20px; bottom: 8px; animation-delay: -3s; }
+.hero-chip--top { right: -12px; top: 28px; }
+.hero-chip--bottom { right: -12px; bottom: 28px; animation-delay: -3s; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-@media (max-width: 1100px) { .hero-chip--top { left: -8px; } .hero-chip--bottom { right: -8px; } }
+@media (max-width: 1100px) { .hero-chip--top, .hero-chip--bottom { right: 0; } }
 @media (max-width: 960px) {
   .hero { min-height: 0; }
   .hero__grid { grid-template-columns: 1fr; }
@@ -259,6 +250,5 @@
 
 /* Hero photo: landscape crop on small screens so the page doesn't get too tall */
 @media (max-width: 560px) {
-  .hero__frame { aspect-ratio: 24 / 23; width: 100%; }
-  .hero__frame img { object-position: 50% 14%; }
+  .hero__frame { width: 100%; margin: 0 auto; }
 }
