@@ -569,8 +569,14 @@ table { border-collapse: collapse; }
 .gnb ul { display: flex; align-items: center; gap: 2px; }
 .gnb a {
   position: relative; display: block; padding: 8px 14px; border-radius: 999px;
-  font-size: 0.9375rem; font-weight: 500; opacity: 0.8;
+  font-size: 0.9375rem; font-weight: 500; opacity: 0.8; white-space: nowrap;
   transition: opacity 0.2s, background-color 0.2s;
+}
+/* keep the desktop nav on one line between the mobile breakpoint and wide screens (longer English labels) */
+@media (min-width: 961px) and (max-width: 1240px) {
+  .site-header__inner { gap: 24px; }
+  .gnb a { padding: 8px 10px; font-size: 0.875rem; }
+  .site-header__actions { gap: 8px; }
 }
 .gnb a:hover { opacity: 1; background: rgba(255, 255, 255, 0.08); }
 .site-header.is-scrolled .gnb a:hover { background: var(--c-bg-mute); }

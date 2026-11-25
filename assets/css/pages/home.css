@@ -252,3 +252,8 @@
 @media (max-width: 560px) {
   .hero__frame { width: 100%; margin: 0 auto; }
 }
+
+/* English page only: longer Latin headline needs a slightly smaller hero display size */
+html[lang="en"] .hero__title { font-size: clamp(2.375rem, 4.6vw, 3.75rem); }
+/* English page only: letter-style signature — name above title */
+html[lang="en"] .company__sign > span { display: flex; flex-direction: column; gap: 2px; line-height: 1.4; }
