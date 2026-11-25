@@ -5,6 +5,22 @@
   var doc = document.documentElement;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* UI strings by page language (<html lang="ko"> / <html lang="en">) */
+  var isEn = (doc.getAttribute("lang") || "").toLowerCase().indexOf("en") === 0;
+  var T = isEn ? {
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
+    subjectPrefix: "[Website Inquiry] ",
+    subjectDefault: "General inquiry",
+    status: function (to) { return "Your email app should open with your message filled in — please review it and press send. If it doesn't open, email us directly at " + to + "."; }
+  } : {
+    menuOpen: "메뉴 열기",
+    menuClose: "메뉴 닫기",
+    subjectPrefix: "[홈페이지 문의] ",
+    subjectDefault: "문의드립니다",
+    status: function (to) { return "메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요. 메일 앱이 열리지 않으면 " + to + " 로 직접 보내주세요."; }
+  };
+
   /* Icons (Lucide, loaded from CDN with defer before this file) */
   function renderIcons() {
     if (window.lucide && typeof window.lucide.createIcons === "function") {
@@ -28,7 +44,7 @@
   function setNav(open) {
     if (!toggle || !mobileNav || !header) return;
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    toggle.setAttribute("aria-label", open ? T.menuClose : T.menuOpen);
     mobileNav.hidden = !open;
     header.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
@@ -119,13 +135,13 @@
         if (field.hasAttribute("data-subject")) subjectParts.push(value);
         lines.push(label + ": " + value);
       });
-      var subject = "[홈페이지 문의] " + (subjectParts.join(" / ") || "문의드립니다");
+      var subject = T.subjectPrefix + (subjectParts.join(" / ") || T.subjectDefault);
       var href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
       window.location.href = href;
       var status = form.querySelector("[data-form-status]");
       if (status) {
         status.hidden = false;
-        status.textContent = "메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요. 메일 앱이 열리지 않으면 " + to + " 로 직접 보내주세요.";
+        status.textContent = T.status(to);
       }
     });
   });
